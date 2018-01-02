@@ -1,0 +1,176 @@
+   59  git clone https://github.com/SYYoung/RepData_PeerAssessment1.git .
+   61  git clone https://github.com/SYYoung/RepData_PeerAssessment1.git Assg1_Repo/
+   68  git status
+   72  git status
+   73  git add assg2.R 
+   74  git commit -m "first version" assg2.R 
+   75  git push origin master
+   92  git status
+   93  git commit -m "finished version" PA1_template.Rmd assg2.R 
+   94  git push origin master
+   95  git status
+   96  git add PA1_template.html PA1_template.md 
+   97  git commit -m "finish version" PA1_template.html PA1_template.md 
+   98  git push origin master
+   99  git status
+  100  git add figure/
+  101  git commit -m "finished generated graphs" figure/
+  102  git push origin master
+  114  git add *.R *.Rmd
+  115  git clone https://github.com/SYYoung/Reproducible-Research.git
+  116  git add *.R *.Rmd
+  118  git init
+  120  git add *.R *.Rmd
+  121  git cmmit -m "final version" *.R *.Rmd
+  122  git commit -m "final version" *.R *.Rmd
+  123  git status
+  124  git remote add origin https://github.com/SYYoung/Reproducible-Research.git
+  125  git push -u origin master
+  130  git init
+  131  git add *.R
+  132  git commit -m "First version" *.R
+  134  git remote add origin https://github.com/SYYoung/Stat-Inference.git
+  135  git push -u origin master
+  136  git status
+  137  git commit swirl_1.R 
+  138  git commit -m "final resampling swirl" swirl_1.R
+  139  git push origin master
+  140  git status
+  141  git add assg4.R 
+  142  git commit -m "finish part 1" assg4.R
+  143  git push origin master
+  144  git status
+  145  git commit -m "work on part 2" assg4.R 
+  146  git push origin master
+  154  git status
+  155  git commit -m "finish part 2 basic analysis" status
+  156  git commit -m "finish part 2 basic analysis" assg4.R 
+  157  git push origin master
+  161  git status
+  162  git commit -m "finish part 2 analysis" assg4.R 
+  163  git push origin master
+  165  git status
+  166  git add assg4.Rmd 
+  167  git commit -m "first version" assg4.Rmd
+  168  git push origin master
+  177  git init
+  178  git add readme 
+  179  git commit -m "a new version" readme 
+  180  git remote add origin https://github.com/nanaiac0628/CWBS.git
+  181  git push -u origin master
+  209  git remote add origin https://github.com/naniac0628/CWBS.git
+  210  git push -u origin master
+  211  git remote add origin https://github.com/naniac0628/CWBS.git
+  212  git push -u origin master
+  213  git remote add origin https://github.com/naniac0628/CWBS.git
+  215  git status
+  216  git commit -m "finished version" assg4.Rmd 
+  217  git push origin master
+  218  git status
+  230  git status
+  231  git init
+  232  git add .
+  234  git status
+  235  git commit -m "First commit" *.R
+  236  git status
+  237  git remote add origin https://github.com/SYYoung/Regression-Model.git
+  238  git remove -v
+  239  git remote -v
+  240  git push origin master
+  245  git status
+  249  git status
+  256  git status
+  257  git add swirl_3.R 
+  258  git commit -m "after finishing swirl practice in week3" week3.R swirl_3.R 
+  259  git push origin master
+  260  git status
+  275  git status
+  276  git add fitting.R  swirl_4.R vifSims.R week4.R 
+  277  git commit -m "Finish 2 swirl assignment" fitting.R swirl_4.R vifSims.R week4.R 
+  278  git status
+  279  git remote origin master
+  280  git push remote origin
+  281  git push
+  282  git push origin master
+  284  git status
+  285  git commit -m "finish swirl homework" swirl_4.R 
+  286  git status
+  287  git push origin master
+  289  git status
+  290  git add quiz4.R 
+  291  git commit -m "finish quiz"  week4.R quiz4.R 
+  292  git push origin master
+  293  git status
+  305  git init
+  306  git commit -m"first commit"
+  307  git remote add origin https://github.com/SYYoung/Intro-to-R.git
+  308  git push -u origin master
+  310  git clone https://github.com/SYYoung/Intro-to-R.git
+  311  git status
+  312  git add from_book.R 
+  313  git commit -m "up to function" from_book.R 
+  314  git status
+  315  git push origin master
+  316  git status
+  317  git commit -m "finish function" from_book.R 
+  319  git push origin master
+  323  git status
+  324  git status *.R *.rds
+  325  git commit -m "finish ch4.7" from_book_exp_data.R chicago.rds 
+  326  git add from_book_exp_data.R 
+  327  git commit -m "finish ch4.7" from_book_exp_data.R chicago.rds 
+  328  git add chicago.rds 
+  329  git commit -m "finish ch4.7" from_book_exp_data.R chicago.rds 
+  330  git push origin master
+  331  git status *.R
+  333  git status *.R
+  334  git commit -m "finish ch.4" from_book_exp_data.R 
+  335  git push origin master
+  344  git status
+  345  git add avgpm25.csv RD_501_88101_*
+  346  git commit -m "finish ch7" avgpm25.csv RD_501_88101_* from_book_exp_data.R 
+  347  git push origin master
+  348  git status |more
+  405  git init
+  406  git commit -m "first commit"
+  408  git add *.git
+  409  git add *.java
+  410  git status
+  411  git commit -m "first version" *.java
+  412  git push remote add origin https://github.com/SYYoung/JAVA-array.git
+  413  git remote add origin https://github.com/SYYoung/JAVA-array.git
+  414  git push -u origin master
+  415  git status *.java
+  416  git help
+  429  git sttus
+  430  git status
+  431  git commit
+  432  git commit VigenereBreaker.java 
+  433  git commit -m "version 2" VigenereBreaker.java 
+  436  more git\ instruction.docx 
+  438  git push -u origin master VigenereBreaker.java 
+  439  git push -u origin master
+  443  git commit -m "work on part 1" VigenereBreaker.java testVigenereBreaker.java 
+  445  git push -u origin master VigenereBreaker.java testVigenereBreaker.java 
+  448  git commit -m "work on part 1" VigenereBreaker.java testVigenereBreaker.java 
+  453  git commit -m "work on part 1" VigenereBreaker.java testVigenereBreaker.java 
+  455  git push -u origin master VigenereBreaker.java testVigenereBreaker.java 
+  459  git commit -m "finish part 1" VigenereBreaker.java testVigenereBreaker.java 
+  461  git push -u origin master VigenereBreaker.java testVigenereBreaker.java 
+  463  git push -u origin master VigenereBreaker.java testVigenereBreaker.java 
+  521  git init
+  522  git add README.md
+  524  git add README.md 
+  525  git commit -m "First commit"
+  526  git remote add origin https://github.com/SYYoung/Java_Performance.git
+  527  git push -u origin master
+  528  git status
+  529  git commit -m "first commit" *.java
+  530  git status
+  531  git add *.java
+  532  git status
+  534  git commit -m "first commit" *.java
+  535  git status
+  537  git push -u origin master
+  539  history|grep git
+  540  history | grep git >> git_command
