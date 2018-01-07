@@ -20,6 +20,7 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
     public AutoCompleteDictionaryTrie()
 	{
 		root = new TrieNode();
+		size = 0;
 	}
 	
 	
@@ -39,8 +40,27 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	 */
 	public boolean addWord(String word)
 	{
-	    //TODO: Implement this method.
-	    return false;
+	    // 1. convert the string to lower case
+		String newWord = word.toLowerCase();
+		// check if such word in the trie
+		TrieNode curr = root;
+		TrieNode nextNode;
+		boolean found = true;
+		
+		for (int k=0; k<newWord.length(); k++) {
+			nextNode = curr.getChild(newWord.charAt(k));
+			if (nextNode == null) { // no such link exists
+				nextNode = curr.insert(newWord.charAt(k));
+				found = false;
+			}
+			curr = nextNode;
+		}
+		if (!found || (found && !curr.endsWord())) {
+			this.size += 1;
+		}
+		curr.setEndsWord(true);
+		
+	    return found;
 	}
 	
 	/** 
@@ -50,7 +70,7 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	public int size()
 	{
 	    //TODO: Implement this method
-	    return 0;
+	    return this.size;
 	}
 	
 	
@@ -59,8 +79,26 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	@Override
 	public boolean isWord(String s) 
 	{
-	    // TODO: Implement this method
-		return false;
+		// check if the input string is a valid string
+		if (s.isEmpty())
+			return false;
+		
+	    // 1. convert the string to lower case
+		String newWord = s.toLowerCase();
+		// check if such word in the trie
+		TrieNode curr = root;
+		TrieNode nextNode;
+		boolean found = false;
+		
+		for (int k=0; k<newWord.length(); k++) {
+			nextNode = curr.getChild(newWord.charAt(k));
+			if (nextNode == null) { // no such link exists
+				return false;
+			}
+			curr = nextNode;
+		}
+	    
+		return true;
 	}
 
 	/** 
