@@ -1,6 +1,7 @@
 package spelling;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Collection;
 import java.util.HashMap;
@@ -126,12 +127,27 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
      {
     	 // TODO: Implement this method
     	 // This method should implement the following algorithm:
+    	 LinkedList<String> emptyList = new LinkedList<String>();
     	 // 1. Find the stem in the trie.  If the stem does not appear in the trie, return an
     	 //    empty list
+    	 String word = prefix.toLowerCase();
+ 		if (word.isEmpty())
+			return emptyList;
+ 		// check if such word in the trie
+		TrieNode curr = root;
+		TrieNode nextNode;
+		for (int k=0; k<word.length(); k++) {
+			nextNode = curr.getChild(word.charAt(k));
+			if (nextNode == null) { // no such link exists
+				return emptyList;
+			}
+			curr = nextNode;
+		}
     	 // 2. Once the stem is found, perform a breadth first search to generate completions
     	 //    using the following algorithm:
     	 //    Create a queue (LinkedList) and add the node that completes the stem to the back
     	 //       of the list.
+		Queue<String> choiceList = new LinkedList<String>();
     	 //    Create a list of completions to return (initially empty)
     	 //    While the queue is not empty and you don't have enough completions:
     	 //       remove the first Node from the queue
