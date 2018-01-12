@@ -144,7 +144,7 @@ public class AutoCompleteDictionaryTrieTester {
 		
 		
 	}
-	@Ignore
+	
 	@Test
 	public void testPredictCompletions()
 	{

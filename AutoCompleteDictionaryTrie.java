@@ -3,6 +3,7 @@ package spelling;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -102,6 +103,30 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 		return true;
 	}
 
+	public TrieNode findStem(String s) 
+	{
+		// check if the input string is a valid string
+		if (s.isEmpty())
+			return root;
+		
+	    // 1. convert the string to lower case
+		String newWord = s.toLowerCase();
+		// check if such word in the trie
+		TrieNode curr = root;
+		TrieNode nextNode;
+		boolean found = false;
+		
+		for (int k=0; k<newWord.length(); k++) {
+			nextNode = curr.getChild(newWord.charAt(k));
+			if (nextNode == null) { // no such link exists
+				return null;
+			}
+			curr = nextNode;
+		}
+	    
+		return curr;
+	}
+
 	/** 
      * Return a list, in order of increasing (non-decreasing) word length,
      * containing the numCompletions shortest legal completions 
@@ -127,35 +152,41 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
      {
     	 // TODO: Implement this method
     	 // This method should implement the following algorithm:
-    	 LinkedList<String> emptyList = new LinkedList<String>();
     	 // 1. Find the stem in the trie.  If the stem does not appear in the trie, return an
     	 //    empty list
-    	 String word = prefix.toLowerCase();
- 		if (word.isEmpty())
-			return emptyList;
- 		// check if such word in the trie
-		TrieNode curr = root;
-		TrieNode nextNode;
-		for (int k=0; k<word.length(); k++) {
-			nextNode = curr.getChild(word.charAt(k));
-			if (nextNode == null) { // no such link exists
-				return emptyList;
-			}
-			curr = nextNode;
-		}
+    	 	ArrayList<String> completeL = new ArrayList<String>();
+    	 	String stem = prefix.toLowerCase();
+    	 	TrieNode currNode = this.findStem(stem);
+    	 	if (currNode == null)
+    	 		return completeL;
     	 // 2. Once the stem is found, perform a breadth first search to generate completions
     	 //    using the following algorithm:
     	 //    Create a queue (LinkedList) and add the node that completes the stem to the back
     	 //       of the list.
-		Queue<String> choiceList = new LinkedList<String>();
     	 //    Create a list of completions to return (initially empty)
     	 //    While the queue is not empty and you don't have enough completions:
     	 //       remove the first Node from the queue
     	 //       If it is a word, add it to the completions list
     	 //       Add all of its child nodes to the back of the queue
     	 // Return the list of completions
+    	 	int numSoFar = 0;
+    	 	Queue<TrieNode> q = new LinkedList<TrieNode>();
+    	 	
+    	 	q.add(currNode);
+ 		while (!q.isEmpty() && (numSoFar < numCompletions)) {
+ 			TrieNode curr = q.remove();
+ 			if (curr.endsWord()) {
+ 				completeL.add(curr.getText());
+ 				numSoFar += 1;
+ 			}
+ 			// get all of the children of currNode
+ 			for (char ch : curr.getValidNextCharacters()) {
+ 				TrieNode node = curr.getChild(ch);
+ 				q.add(node);
+ 			}
+ 		}	
     	 
-         return null;
+         return completeL;
      }
 
  	// For debugging
