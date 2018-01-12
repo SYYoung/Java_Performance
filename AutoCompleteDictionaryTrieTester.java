@@ -18,12 +18,12 @@ import org.junit.Test;
  */
 public class AutoCompleteDictionaryTrieTester {
 
-	//private String dictFile = "data/words.small.txt"; 
-	String dictFile = "";
+	private String dictFile = "data/words.small.txt"; 
+	//tring dictFile = "";
 
 	AutoCompleteDictionaryTrie emptyDict; 
 	AutoCompleteDictionaryTrie smallDict;
-	//AutoCompleteDictionaryTrie largeDict;
+	AutoCompleteDictionaryTrie largeDict;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -33,7 +33,7 @@ public class AutoCompleteDictionaryTrieTester {
 	{
 		emptyDict = new AutoCompleteDictionaryTrie();
 		smallDict = new AutoCompleteDictionaryTrie();
-		//largeDict = new AutoCompleteDictionaryTrie();
+		largeDict = new AutoCompleteDictionaryTrie();
 
 		smallDict.addWord("Hello");
 		smallDict.addWord("HElLo");
@@ -45,7 +45,7 @@ public class AutoCompleteDictionaryTrieTester {
 		smallDict.addWord("a");
 		smallDict.addWord("subsequent");
 		
-		//DictionaryLoader.loadDictionary(largeDict, dictFile);
+		DictionaryLoader.loadDictionary(largeDict, dictFile);
 		System.out.println("This is emptyDict:");
 		emptyDict.printTree();
 		System.out.println("emptyDict size = " + emptyDict.size());
@@ -63,33 +63,33 @@ public class AutoCompleteDictionaryTrieTester {
 	{
 		assertEquals("Testing size for empty dict", 0, emptyDict.size());
 		assertEquals("Testing size for small dict", 8, smallDict.size());
-		//assertEquals("Testing size for large dict", 4438, largeDict.size());
+		assertEquals("Testing size for large dict", 4438, largeDict.size());
 	}
 	
 	/** Test the isWord method */
-	@Ignore
+	
 	@Test
 	public void testIsWord()
 	{
 		assertEquals("Testing isWord on empty: Hello", false, emptyDict.isWord("Hello"));
 		assertEquals("Testing isWord on small: Hello", true, smallDict.isWord("Hello"));
-		//assertEquals("Testing isWord on large: Hello", true, largeDict.isWord("Hello"));
+		assertEquals("Testing isWord on large: Hello", true, largeDict.isWord("Hello"));
 		
 		assertEquals("Testing isWord on small: hello", true, smallDict.isWord("hello"));
-		//assertEquals("Testing isWord on large: hello", true, largeDict.isWord("hello"));
+		assertEquals("Testing isWord on large: hello", true, largeDict.isWord("hello"));
 
 		assertEquals("Testing isWord on small: hellow", false, smallDict.isWord("hellow"));
-		//assertEquals("Testing isWord on large: hellow", false, largeDict.isWord("hellow"));
+		assertEquals("Testing isWord on large: hellow", false, largeDict.isWord("hellow"));
 		
 		assertEquals("Testing isWord on empty: empty string", false, emptyDict.isWord(""));
 		assertEquals("Testing isWord on small: empty string", false, smallDict.isWord(""));
-		//assertEquals("Testing isWord on large: empty string", false, largeDict.isWord(""));
+		assertEquals("Testing isWord on large: empty string", false, largeDict.isWord(""));
 		
 		assertEquals("Testing isWord on small: no", false, smallDict.isWord("no"));
-		//assertEquals("Testing isWord on large: no", true, largeDict.isWord("no"));
+		assertEquals("Testing isWord on large: no", true, largeDict.isWord("no"));
 		
 		assertEquals("Testing isWord on small: subsequent", true, smallDict.isWord("subsequent"));
-		//assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
+		assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
 		
 		
 	}
@@ -102,11 +102,11 @@ public class AutoCompleteDictionaryTrieTester {
 		
 		assertEquals("Asserting hellow is not in empty dict", false, emptyDict.isWord("hellow"));
 		assertEquals("Asserting hellow is not in small dict", false, smallDict.isWord("hellow"));
-		//assertEquals("Asserting hellow is not in large dict", false, largeDict.isWord("hellow"));
+		assertEquals("Asserting hellow is not in large dict", false, largeDict.isWord("hellow"));
 		
 		emptyDict.addWord("hellow");
 		smallDict.addWord("hellow");
-		//largeDict.addWord("hellow");
+		largeDict.addWord("hellow");
 		
 		System.out.println("Inside testAddWord();, emptyDict : ");
 		emptyDict.printTree();
@@ -116,31 +116,31 @@ public class AutoCompleteDictionaryTrieTester {
 
 		assertEquals("Asserting hellow is in empty dict", true, emptyDict.isWord("hellow"));
 		assertEquals("Asserting hellow is in small dict", true, smallDict.isWord("hellow"));
-		//assertEquals("Asserting hellow is in large dict", true, largeDict.isWord("hellow"));
+		assertEquals("Asserting hellow is in large dict", true, largeDict.isWord("hellow"));
 
 		assertEquals("Asserting xyzabc is not in empty dict", false, emptyDict.isWord("xyzabc"));
 		assertEquals("Asserting xyzabc is not in small dict", false, smallDict.isWord("xyzabc"));
-		//assertEquals("Asserting xyzabc is in large dict", false, largeDict.isWord("xyzabc"));
+		assertEquals("Asserting xyzabc is in large dict", false, largeDict.isWord("xyzabc"));
 
 		
 		emptyDict.addWord("XYZAbC");
 		smallDict.addWord("XYZAbC");
-		//largeDict.addWord("XYZAbC");
+		largeDict.addWord("XYZAbC");
 
 		assertEquals("Asserting xyzabc is in empty dict", true, emptyDict.isWord("xyzabc"));
 		assertEquals("Asserting xyzabc is in small dict", true, smallDict.isWord("xyzabc"));
-		//assertEquals("Asserting xyzabc is large dict", true, largeDict.isWord("xyzabc"));
+		assertEquals("Asserting xyzabc is large dict", true, largeDict.isWord("xyzabc"));
 		
 		
 		assertEquals("Testing isWord on empty: empty string", false, emptyDict.isWord(""));
 		assertEquals("Testing isWord on small: empty string", false, smallDict.isWord(""));
-		//assertEquals("Testing isWord on large: empty string", false, largeDict.isWord(""));
+		assertEquals("Testing isWord on large: empty string", false, largeDict.isWord(""));
 		
 		assertEquals("Testing isWord on small: no", false, smallDict.isWord("no"));
-		//assertEquals("Testing isWord on large: no", true, largeDict.isWord("no"));
+		assertEquals("Testing isWord on large: no", true, largeDict.isWord("no"));
 		
 		assertEquals("Testing isWord on small: subsequent", true, smallDict.isWord("subsequent"));
-		//assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
+		assertEquals("Testing isWord on large: subsequent", true, largeDict.isWord("subsequent"));
 		
 		
 	}
