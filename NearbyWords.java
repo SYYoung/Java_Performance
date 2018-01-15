@@ -36,7 +36,7 @@ public class NearbyWords implements SpellingSuggest {
 		   List<String> retList = new ArrayList<String>();
 		   insertions(s, retList, wordsOnly);
 		   substitution(s, retList, wordsOnly);
-		   deletions(s, retList, wordsOnly);
+		   //deletions(s, retList, wordsOnly);
 		   return retList;
 	}
 
@@ -77,6 +77,27 @@ public class NearbyWords implements SpellingSuggest {
 	 */
 	public void insertions(String s, List<String> currentList, boolean wordsOnly ) {
 		// TODO: Implement this method  
+		// for each letter in the s and for all possible replacement characters
+		for(int index = 0; index <= s.length(); index++){
+			for(int charCode = (int)'a'; charCode <= (int)'z'; charCode++) {
+				// use StringBuffer for an easy interface to permuting the 
+				// letters in the String
+				String sb = new String();
+				// the new string is the substring from str(0,index) + new char + substring(index,end)
+				if (index != s.length())
+					sb = s.substring(0, index) + (char)charCode + s.substring(index);
+				else
+					sb = s + (char)charCode;
+
+				// if the item isn't in the list, isn't the original string, and
+				// (if wordsOnly is true) is a real word, add to the list
+				if(!currentList.contains(sb.toString()) && 
+						(!wordsOnly||dict.isWord(sb.toString())) &&
+						!s.equals(sb.toString())) {
+					currentList.add(sb.toString());
+				}
+			}
+		}
 	}
 
 	/** Add to the currentList Strings that are one character deletion away
@@ -117,8 +138,8 @@ public class NearbyWords implements SpellingSuggest {
 	}	
 
    public static void main(String[] args) {
-	   /* basic testing code to get started
-	   String word = "i";
+	   // basic testing code to get started
+	   String word = "lan";
 	   // Pass NearbyWords any Dictionary implementation you prefer
 	   Dictionary d = new DictionaryHashSet();
 	   DictionaryLoader.loadDictionary(d, "data/dict.txt");
@@ -127,6 +148,7 @@ public class NearbyWords implements SpellingSuggest {
 	   System.out.println("One away word Strings for for \""+word+"\" are:");
 	   System.out.println(l+"\n");
 
+	   /*
 	   word = "tailo";
 	   List<String> suggest = w.suggestions(word, 10);
 	   System.out.println("Spelling Suggestions for \""+word+"\" are:");
