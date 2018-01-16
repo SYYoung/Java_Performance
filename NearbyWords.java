@@ -36,7 +36,7 @@ public class NearbyWords implements SpellingSuggest {
 		   List<String> retList = new ArrayList<String>();
 		   insertions(s, retList, wordsOnly);
 		   substitution(s, retList, wordsOnly);
-		   //deletions(s, retList, wordsOnly);
+		   deletions(s, retList, wordsOnly);
 		   return retList;
 	}
 
@@ -109,6 +109,22 @@ public class NearbyWords implements SpellingSuggest {
 	 */
 	public void deletions(String s, List<String> currentList, boolean wordsOnly ) {
 		// TODO: Implement this method
+		for(int index = 0; index < s.length(); index++){
+			// use StringBuffer for an easy interface to permuting the 
+			// letters in the String
+			String sb = new String(s);
+			if (index != s.length()-1)
+				sb = s.substring(0, index) + s.substring(index+1);
+			else
+				sb = s.substring(0, index);
+			// if the item isn't in the list, isn't the original string, and
+			// (if wordsOnly is true) is a real word, add to the list
+			if(!currentList.contains(sb.toString()) && 
+					(!wordsOnly||dict.isWord(sb.toString())) &&
+					!s.equals(sb.toString())) {
+				currentList.add(sb.toString());
+			}
+		}
 	}
 
 	/** Add to the currentList Strings that are one character deletion away
@@ -139,7 +155,7 @@ public class NearbyWords implements SpellingSuggest {
 
    public static void main(String[] args) {
 	   // basic testing code to get started
-	   String word = "lan";
+	   String word = "beats";
 	   // Pass NearbyWords any Dictionary implementation you prefer
 	   Dictionary d = new DictionaryHashSet();
 	   DictionaryLoader.loadDictionary(d, "data/dict.txt");
